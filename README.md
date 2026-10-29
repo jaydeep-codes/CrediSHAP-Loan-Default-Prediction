@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="docs/assets/credishap_hero_banner.png" alt="CrediSHAP: Explainable Machine Learning for Loan Default Prediction" width="100%">
-</div>
-<div align="center">
 
 # 🏦 CrediSHAP
 ### Explainable Machine Learning for Loan Default Prediction

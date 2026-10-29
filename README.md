@@ -1,7 +1,5 @@
 <div align="center">
-  <br />
-  <img src="docs/assets/dashboard_demo.gif" alt="Streamlit Dashboard Demo" width="800">
-  <br />
+  <img src="docs/assets/credishap_hero_banner.png" alt="CrediSHAP: Explainable Machine Learning for Loan Default Prediction" width="100%">
 </div>
 <div align="center">
 

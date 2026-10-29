@@ -1,4 +1,9 @@
 <div align="center">
+  <br />
+  <img src="docs/assets/dashboard_demo.gif" alt="Streamlit Dashboard Demo" width="800">
+  <br />
+</div>
+<div align="center">
 
 # 🏦 CrediSHAP
 ### Explainable Machine Learning for Loan Default Prediction

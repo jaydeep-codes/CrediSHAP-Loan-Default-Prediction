@@ -16,22 +16,31 @@ venv/
 .venv/
 env/
 
-# Jupyter Notebooks checkpoints
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Data files (large datasets)
+# Data files (large — download from Kaggle, see data/README.md)
 data/dataset.csv
+data/*.csv
+data/*.xlsx
+data/*.parquet
 
-# Model files (can be large — keep metadata, remove binary blobs if needed)
-# models/*.pkl
+# Secrets / environment variables
+.env
+*.env
+secrets.json
 
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # IDE
 .vscode/
 .idea/
+*.code-workspace
 
-# Logs
+# Logs & temp
 *.log
+tmp/
+temp/

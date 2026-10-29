@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.spec
+
+# Virtual environments
+venv/
+.env/
+.venv/
+env/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Data files (large datasets)
+data/dataset.csv
+
+# Model files (can be large — keep metadata, remove binary blobs if needed)
+# models/*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

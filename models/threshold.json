@@ -1,0 +1,4 @@
+{
+  "optimal_threshold": 0.35,
+  "selection_metric": "F1-Score"
+}

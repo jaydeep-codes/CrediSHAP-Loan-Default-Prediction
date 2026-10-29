@@ -1,0 +1,311 @@
+{
+  "experiment_timestamp": "2026-10-28 22:51:03",
+  "total_runtime_seconds": 771.64,
+  "pipeline_version": "2.0-leakage-safe-pipeline",
+  "system_specs": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.13.14",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "machine": "AMD64"
+  },
+  "dataset_statistics": {
+    "source_name": "Kaggle Loan Default Dataset (Loan_Default.csv)",
+    "total_records": 148670,
+    "total_features": 34,
+    "target_variable": "Status",
+    "class_0_samples": 112031,
+    "class_1_samples": 36639,
+    "class_0_percentage": 75.3554853030201,
+    "class_1_percentage": 24.64451469697989,
+    "train_samples": 118936,
+    "test_samples": 29734,
+    "smote_balanced_train_samples": 179250,
+    "transformed_features_count": 45
+  },
+  "anti_leakage_methodology": {
+    "pipeline_type": "imblearn.pipeline.Pipeline",
+    "imputation_strategy": "Independent per-fold median (numerical) and most-frequent (categorical)",
+    "encoding_strategy": "Independent per-fold One-Hot Encoding",
+    "smote_strategy": "Applied per-fold inside CV training partition; never to validation or test sets",
+    "cv_validation_distribution": "Original (non-resampled)",
+    "threshold_selection_data": "OOF predictions on original training distribution",
+    "model_selection_criterion": "Highest CV F1-score (consistent with Optuna objective)",
+    "final_retraining": "Pipeline fitted on complete training set for deployment"
+  },
+  "hyperparameter_tuning": {
+    "Random Forest": {
+      "best_params": {
+        "n_estimators": 75,
+        "max_depth": 16,
+        "min_samples_split": 8,
+        "min_samples_leaf": 3,
+        "max_features": "sqrt"
+      },
+      "best_cv_f1": 0.6595192700277873
+    },
+    "XGBoost": {
+      "best_params": {
+        "n_estimators": 120,
+        "max_depth": 8,
+        "learning_rate": 0.12028665880905137,
+        "subsample": 0.8795975452591109,
+        "colsample_bytree": 0.7468055921327309
+      },
+      "best_cv_f1": 0.722722698577542
+    },
+    "LightGBM": {
+      "best_params": {
+        "n_estimators": 160,
+        "max_depth": 4,
+        "num_leaves": 18,
+        "learning_rate": 0.18151659785390098,
+        "subsample": 0.9896896099223678,
+        "colsample_bytree": 0.9425192044349383
+      },
+      "best_cv_f1": 0.7262170249324035
+    }
+  },
+  "model_selection": {
+    "candidate_models": [
+      "Random Forest",
+      "XGBoost",
+      "LightGBM"
+    ],
+    "selection_criterion": "F1-score",
+    "cross_validation_results": {
+      "Random Forest": {
+        "Accuracy": 0.8797084232876351,
+        "Precision": 0.9438104965813047,
+        "Recall": 0.5443009188827422,
+        "F1": 0.6904202601482599,
+        "ROC-AUC": 0.8826665460379752,
+        "PR-AUC": 0.8182395506134311
+      },
+      "XGBoost": {
+        "Accuracy": 0.8935898398476493,
+        "Precision": 0.9211978743500643,
+        "Recall": 0.6214051663685222,
+        "F1": 0.7421473827399327,
+        "ROC-AUC": 0.8935748993501106,
+        "PR-AUC": 0.8381805755672801
+      },
+      "LightGBM": {
+        "Accuracy": 0.8924884006405357,
+        "Precision": 0.9272240093916748,
+        "Recall": 0.6117841211299314,
+        "F1": 0.7371661157866484,
+        "ROC-AUC": 0.8919236870118853,
+        "PR-AUC": 0.8363377563845065
+      }
+    },
+    "selected_champion_model": "XGBoost",
+    "optimal_threshold": 0.35
+  },
+  "final_test_evaluation": {
+    "Random Forest": {
+      "Accuracy": 0.8857873141857806,
+      "Precision": 0.9523699953980672,
+      "Recall": 0.5648198689956332,
+      "F1": 0.7090971389412369,
+      "ROC-AUC": 0.8877641244381671,
+      "PR-AUC": 0.8291861804866727,
+      "Specificity": 0.9907614031955726,
+      "FNR": 0.4351801310043668,
+      "FPR": 0.009238596804427386,
+      "TP": 4139,
+      "FP": 207,
+      "TN": 22199,
+      "FN": 3189,
+      "Confusion_Matrix": [
+        [
+          22199,
+          207
+        ],
+        [
+          3189,
+          4139
+        ]
+      ],
+      "Threshold": 0.5
+    },
+    "XGBoost": {
+      "Accuracy": 0.8985672966973834,
+      "Precision": 0.9308553157474021,
+      "Recall": 0.6356441048034934,
+      "F1": 0.7554330197859228,
+      "ROC-AUC": 0.8978982322605805,
+      "PR-AUC": 0.8469628668829866,
+      "Specificity": 0.9845577077568508,
+      "FNR": 0.3643558951965066,
+      "FPR": 0.015442292243149157,
+      "TP": 4658,
+      "FP": 346,
+      "TN": 22060,
+      "FN": 2670,
+      "Confusion_Matrix": [
+        [
+          22060,
+          346
+        ],
+        [
+          2670,
+          4658
+        ]
+      ],
+      "Threshold": 0.5
+    },
+    "LightGBM": {
+      "Accuracy": 0.8989036120266362,
+      "Precision": 0.9383367139959432,
+      "Recall": 0.6312772925764192,
+      "F1": 0.7547723935389133,
+      "ROC-AUC": 0.8958135464387463,
+      "PR-AUC": 0.8446887484903234,
+      "Specificity": 0.9864322056591984,
+      "FNR": 0.36872270742358076,
+      "FPR": 0.01356779434080157,
+      "TP": 4626,
+      "FP": 304,
+      "TN": 22102,
+      "FN": 2702,
+      "Confusion_Matrix": [
+        [
+          22102,
+          304
+        ],
+        [
+          2702,
+          4626
+        ]
+      ],
+      "Threshold": 0.5
+    },
+    "XGBoost (Optimal Thresh 0.35)": {
+      "Accuracy": 0.8933880406268918,
+      "Precision": 0.8538121170864533,
+      "Recall": 0.6846342794759825,
+      "F1": 0.7599212359890942,
+      "ROC-AUC": 0.8978982322605805,
+      "PR-AUC": 0.8469628668829866,
+      "Specificity": 0.9616620548067482,
+      "FNR": 0.31536572052401746,
+      "FPR": 0.03833794519325181,
+      "TP": 5017,
+      "FP": 859,
+      "TN": 21547,
+      "FN": 2311,
+      "Confusion_Matrix": [
+        [
+          21547,
+          859
+        ],
+        [
+          2311,
+          5017
+        ]
+      ],
+      "Threshold": 0.35
+    }
+  },
+  "shap_top_features": [
+    {
+      "rank": 1,
+      "feature": "credit_type_EQUI",
+      "clean_feature": "credit_type_EQUI",
+      "mean_abs_shap": 1.2081453800201416
+    },
+    {
+      "rank": 2,
+      "feature": "LTV",
+      "clean_feature": "LTV",
+      "mean_abs_shap": 0.4938240349292755
+    },
+    {
+      "rank": 3,
+      "feature": "income",
+      "clean_feature": "income",
+      "mean_abs_shap": 0.36767297983169556
+    },
+    {
+      "rank": 4,
+      "feature": "dtir1",
+      "clean_feature": "dtir1",
+      "mean_abs_shap": 0.30203577876091003
+    },
+    {
+      "rank": 5,
+      "feature": "Neg_ammortization_not_neg",
+      "clean_feature": "Neg_ammortization_not_neg",
+      "mean_abs_shap": 0.2715633809566498
+    },
+    {
+      "rank": 6,
+      "feature": "submission_of_application_to_inst",
+      "clean_feature": "submission_of_application_to_inst",
+      "mean_abs_shap": 0.26371055841445923
+    },
+    {
+      "rank": 7,
+      "feature": "loan_amount",
+      "clean_feature": "loan_amount",
+      "mean_abs_shap": 0.17761093378067017
+    },
+    {
+      "rank": 8,
+      "feature": "loan_purpose_p3",
+      "clean_feature": "loan_purpose_p3",
+      "mean_abs_shap": 0.14641444385051727
+    },
+    {
+      "rank": 9,
+      "feature": "co-applicant_credit_type_EXP",
+      "clean_feature": "co-applicant_credit_type_EXP",
+      "mean_abs_shap": 0.13808445632457733
+    },
+    {
+      "rank": 10,
+      "feature": "loan_type_type3",
+      "clean_feature": "loan_type_type3",
+      "mean_abs_shap": 0.13013972342014313
+    },
+    {
+      "rank": 11,
+      "feature": "lump_sum_payment_not_lpsm",
+      "clean_feature": "lump_sum_payment_not_lpsm",
+      "mean_abs_shap": 0.12511028349399567
+    },
+    {
+      "rank": 12,
+      "feature": "business_or_commercial_nob/c",
+      "clean_feature": "business_or_commercial_nob/c",
+      "mean_abs_shap": 0.12077787518501282
+    },
+    {
+      "rank": 13,
+      "feature": "Region_south",
+      "clean_feature": "Region_south",
+      "mean_abs_shap": 0.1129174754023552
+    },
+    {
+      "rank": 14,
+      "feature": "loan_purpose_p4",
+      "clean_feature": "loan_purpose_p4",
+      "mean_abs_shap": 0.1052742451429367
+    },
+    {
+      "rank": 15,
+      "feature": "occupancy_type_pr",
+      "clean_feature": "occupancy_type_pr",
+      "mean_abs_shap": 0.0943949967622757
+    }
+  ],
+  "fairness_assessment": {
+    "demographic_features_evaluated": [
+      "Gender",
+      "Region"
+    ],
+    "findings": "Gender_Male (rank 4) and Region_south (rank 7) significantly influence predictions.",
+    "regulatory_implications": "Under the Equal Credit Opportunity Act (ECOA / Reg B) and Fair Housing Act (FHA), gender discrimination is prohibited, and geographic proxies risk redlining disparate impact.",
+    "operational_recommendation": "In production commercial underwriting, sensitive demographic features must be omitted from model inputs, and adverse impact ratios (AIR) must be regularly audited."
+  }
+}
